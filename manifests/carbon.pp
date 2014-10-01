@@ -184,6 +184,36 @@ class graphite::carbon(
     # we need the software before configuring it
     Class['graphite::carbon::package'] -> Class['graphite::carbon::config']
 
+    graphite::local_check { 'carbon_cache_line_receiver_port':
+      interface => $cache_line_receiver_interface,
+      port      => $cache_line_receiver_port
+    }
+
+    graphite::local_check { 'carbon_cache_pickle_receiver_port':
+      interface => $cache_pickle_receiver_interface,
+      port      => $cache_pickle_receiver_port
+    }
+
+    graphite::local_check { 'carbon_relay_line_receiver_port':
+      interface => $relay_line_receiver_check_interface,
+      port      => $relay_line_receiver_port
+    }
+
+    graphite::local_check { 'carbon_relay_pickle_receiver_port':
+      interface => $relay_pickle_receiver_interface,
+      port      => $relay_pickle_receiver_port
+    }
+
+    graphite::local_check { 'carbon_aggregator_line_receiver_port':
+      interface => $aggregator_line_receiver_interface,
+      port      => $aggregator_line_receiver_port
+    }
+
+    graphite::local_check { 'carbon_aggregator_pickle_receiver_port':
+      interface => $aggregator_pickle_receiver_interface,
+      port      => $aggregator_pickle_receiver_port
+    }
+
   } else {
 
     # make sure all services are getting stopped before software removal
