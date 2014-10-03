@@ -177,6 +177,7 @@ class graphite::carbon(
     }
 
     graphite::carbon::cache::storage { 'default_1min_for_1day':
+      order      => 100,
       pattern    => '.*',
       retentions => '60s:1d'
     }
