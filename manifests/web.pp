@@ -127,9 +127,12 @@ class graphite::web(
       database_password     => $database_password,
       database_host         => $database_host,
       database_port         => $database_port,
+      database_backend      => $database_backend,
 
       carbonlink_hosts      => $carbonlink_hosts,
       cluster_servers       => $cluster_servers,
+      memcache_servers      => $memcache_servers,
+      cache_duration        => $cache_duration,
     }
 
     #### Manage relationships

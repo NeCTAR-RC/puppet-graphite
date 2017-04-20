@@ -30,9 +30,12 @@ class graphite::web::config (
   $database_password,
   $database_host,
   $database_port,
+  $database_backend,
 
   $carbonlink_hosts,
   $cluster_servers,
+  $memcache_servers,
+  $cache_duration,
 )
 {
 
