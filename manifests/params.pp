@@ -51,20 +51,11 @@ class graphite::params {
       $package_web     = [ 'graphite-web']
     }
     'Debian', 'Ubuntu': {
-      case $::lsbdistcodename {
-        'Trusty', 'Xenial', 'Bionic': {
-          # main application
-          $package_carbon  = [ 'graphite-carbon' ]
-          $package_whisper = [ 'python-whisper' ]
-          $package_web     = [ 'graphite-web' ]
-        }
-        default: {
-          # main application
-          $package_carbon  = [ 'python-carbon' ]
-          $package_whisper = [ 'python-whisper' ]
-          $package_web     = [ 'python-graphite' ]
-        }
-    }}
+      # main application
+      $package_carbon  = [ 'graphite-carbon' ]
+      $package_whisper = [ 'python-whisper' ]
+      $package_web     = [ 'graphite-web' ]
+    }
     default: {
       fail("\"${module_name}\" provides no package default value
             for \"${::operatingsystem}\"")
@@ -115,20 +106,7 @@ class graphite::params {
       $service_aggregator_hasstatus  = true
       $service_aggregator_pattern    = $service_aggregator_name
 
-      case $::lsbdistcodename {
-        'Trusty': {
-          $web_config_path = '/etc/graphite'
-        }
-        'Xenial': {
-          $web_config_path = '/etc/graphite'
-        }
-        'Bionic': {
-          $web_config_path = '/etc/graphite'
-        }
-        default: {
-          $web_config_path = '/etc/graphite-web'
-        }
-      }
+      $web_config_path = '/etc/graphite'
     }
     default: {
       fail("\"${module_name}\" provides no service parameters
